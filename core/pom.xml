@@ -3,16 +3,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <packaging>jar</packaging>
     <groupId>de.pfeufferweb.gitcover</groupId>
-    <artifactId>GitCover</artifactId>
-    <name>GitCover</name>
+    <artifactId>core</artifactId>
+    <name>gitcover-core</name>
     <version>0.2</version>
-    <packaging>pom</packaging>
 
-    <modules>
-        <module>core</module>
-        <module>cli</module>
-    </modules>
 
     <dependencies>
         <dependency>
