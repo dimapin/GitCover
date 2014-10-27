@@ -16,7 +16,10 @@ class GCOptions
     private String ignoreFile = null;
     private String repository = null;
     private String reference = null;
+
     private boolean failed = false;
+
+    private CoverageTool coverageTool = CoverageTool.COBERTURA;
 
     public void parse(String[] args)
     {
@@ -54,6 +57,16 @@ class GCOptions
             printHelp(options);
             failed = true;
         }
+        if(line.hasOption("ct"))
+        {
+            switch (line.getOptionValue("ct")){
+                case "cobertura": coverageTool = CoverageTool.COBERTURA;
+                    break;
+                case "jacoco": coverageTool = CoverageTool.JACOCO;
+                    break;
+                default: break;
+            }
+        }
     }
 
     @SuppressWarnings("static-access")
@@ -66,6 +79,8 @@ class GCOptions
                 .withDescription("use this to ignore files that have been modified").create("em");
         Option excludeAddedOption = OptionBuilder.withLongOpt("exclude-added")
                 .withDescription("use this to ignore files that have been modified").create("ea");
+        Option coverageToolOption = OptionBuilder.withLongOpt("coverage-tool")
+                .withDescription("use this to select between cobertura and jacoco").create("ct");
         options.addOption(ignoreFileOption);
         options.addOption(excludeModifiedOption);
         options.addOption(excludeAddedOption);

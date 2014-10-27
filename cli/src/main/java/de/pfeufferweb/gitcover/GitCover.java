@@ -76,13 +76,13 @@ public class GitCover
         out.println("a.ignored {background:#CDF;}");
         out.println("a.allCovered {background:#CFC;}");
         out.println("a.coverageMissing {background:#FDC;}");
-        out.println("a.exp::after {content:\"»\";float:right;}");
+        out.println("a.exp::after {content:\"ï¿½\";float:right;}");
         out.println("a.exp:focus {border-width: 1px 1px 0 1px;border-radius:4px 4px 0 0}");
         out.println("a.exp + div {display:none;}");
         out.println("a.exp:focus + div {display:block;border-width: 0 1px 1px 1px;border-style:solid; border-radius:0 0 4px 4px;border-color:black;}");
         out.println("a.exp:focus::after {content:\"\";}");
         out.println("div.exp *{padding:0.3em 10px 0em 10px;}");
-        out.println("div.exp table:last-child::after {content:\"«\";float:right;}");
+        out.println("div.exp table:last-child::after {content:\"ï¿½\";float:right;}");
         out.println("div.exp *:first-child {margin-top:0;}");
         out.println("tr.notCovered {background: orangered;}");
         out.println("tr.covered {background: lightgreen;}");
@@ -91,9 +91,9 @@ public class GitCover
         out.println("</style>");
         ChangedLines changedLines = createChangedLinesBuilder(options, options.getRepository()).build(
                 options.getReference());
-        Coverage coverage = new CoverageBuilder().computeAll(new File(options.getRepository()));
+        Coverage coverage = new CoberturaCoverageBuilder().computeAll(new File(options.getRepository()));
         out.println("<body>");
-        out.println("<h1>Unittestabdeckung der Änderungen bzgl. Branch " + options.getReference() + "</h1>");
+        out.println("<h1>Unittestabdeckung der ï¿½nderungen bzgl. Branch " + options.getReference() + "</h1>");
         List<String> fileNames = new ArrayList<String>(changedLines.getFileNames());
         sort(fileNames);
         OverallCoverage overall = new OverallCoverage();
@@ -135,7 +135,7 @@ public class GitCover
             }
             out.println("</table></div>");
         }
-        out.println("Durchschnittliche Abdeckung aller testrelevanten Änderungen: " + overall.getCoverage() + "%");
+        out.println("Durchschnittliche Abdeckung aller testrelevanten ï¿½nderungen: " + overall.getCoverage() + "%");
         out.println("</body>");
         out.println("</html>");
     }
