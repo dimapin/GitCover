@@ -57,17 +57,15 @@ class GCOptions
             printHelp(options);
             failed = true;
         }
-        if(line.hasOption("ct"))
-        {
-            switch (line.getOptionValue("ct")){
-                case "cobertura": coverageTool = CoverageTool.COBERTURA;
-                    break;
-                case "jacoco": coverageTool = CoverageTool.JACOCO;
-                    break;
-                default: break;
+        if(line.hasOption("ct")) {
+            if (line.getOptionValue("ct").equals("cobertura")) {
+                coverageTool = CoverageTool.COBERTURA;
+            }
+            if (line.getOptionValue("ct").equals("jacoco")){
+                coverageTool = CoverageTool.JACOCO;
+            }
             }
         }
-    }
 
     @SuppressWarnings("static-access")
     private Options buildOptions()
