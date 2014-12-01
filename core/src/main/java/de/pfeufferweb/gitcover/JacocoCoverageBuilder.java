@@ -67,6 +67,8 @@ public class JacocoCoverageBuilder
     {
         Coverage result = new Coverage();
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        factory.setFeature("http://apache.org/xml/features/nonvalidating/load-dtd-grammar", false);
+        factory.setFeature("http://apache.org/xml/features/nonvalidating/load-external-dtd", false);
         DocumentBuilder builder = factory.newDocumentBuilder();
         builder.setEntityResolver(new EntityResolver()
         {

@@ -91,7 +91,13 @@ public class GitCover
         out.println("</style>");
         ChangedLines changedLines = createChangedLinesBuilder(options, options.getRepository()).build(
                 options.getReference());
-        Coverage coverage = new CoberturaCoverageBuilder().computeAll(new File(options.getRepository()));
+        Coverage coverage=null;
+        if(options.getCoverageTool()==CoverageTool.JACOCO) {
+            coverage = new JacocoCoverageBuilder().computeAll(new File(options.getRepository()));
+        }
+        else if(options.getCoverageTool()==CoverageTool.COBERTURA) {
+            coverage = new CoberturaCoverageBuilder().computeAll(new File(options.getRepository()));
+        }
         out.println("<body>");
         out.println("<h1>Unittestabdeckung der �nderungen bzgl. Branch " + options.getReference() + "</h1>");
         List<String> fileNames = new ArrayList<String>(changedLines.getFileNames());

@@ -21,6 +21,14 @@ class GCOptions
 
     private CoverageTool coverageTool = CoverageTool.COBERTURA;
 
+    public CoverageTool getCoverageTool() {
+        return coverageTool;
+    }
+
+    public void setCoverageTool(CoverageTool coverageTool) {
+        this.coverageTool = coverageTool;
+    }
+
     public void parse(String[] args)
     {
         Options options = buildOptions();
@@ -47,6 +55,14 @@ class GCOptions
         {
             ignoreFile = line.getOptionValue("ignore");
         }
+        if(line.hasOption("coverage-tool")) {
+            if (line.getOptionValue("coverage-tool").equals("cobertura")) {
+                coverageTool = CoverageTool.COBERTURA;
+            }
+            if (line.getOptionValue("coverage-tool").equals("jacoco")){
+                coverageTool = CoverageTool.JACOCO;
+            }
+        }
         if (line.getArgs().length == 2)
         {
             repository = line.getArgs()[0];
@@ -57,15 +73,7 @@ class GCOptions
             printHelp(options);
             failed = true;
         }
-        if(line.hasOption("ct")) {
-            if (line.getOptionValue("ct").equals("cobertura")) {
-                coverageTool = CoverageTool.COBERTURA;
-            }
-            if (line.getOptionValue("ct").equals("jacoco")){
-                coverageTool = CoverageTool.JACOCO;
-            }
-            }
-        }
+    }
 
     @SuppressWarnings("static-access")
     private Options buildOptions()
@@ -77,11 +85,12 @@ class GCOptions
                 .withDescription("use this to ignore files that have been modified").create("em");
         Option excludeAddedOption = OptionBuilder.withLongOpt("exclude-added")
                 .withDescription("use this to ignore files that have been modified").create("ea");
-        Option coverageToolOption = OptionBuilder.withLongOpt("coverage-tool")
+        Option coverageToolOption = OptionBuilder.withLongOpt("coverage-tool").withLongOpt("coverage-tool").hasArg()
                 .withDescription("use this to select between cobertura and jacoco").create("ct");
         options.addOption(ignoreFileOption);
         options.addOption(excludeModifiedOption);
         options.addOption(excludeAddedOption);
+        options.addOption(coverageToolOption);
         return options;
     }
 
