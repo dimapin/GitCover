@@ -12,6 +12,7 @@
     <modules>
         <module>core</module>
         <module>cli</module>
+        <module>gitcover-maven-plugin</module>
     </modules>
 
     <dependencies>
