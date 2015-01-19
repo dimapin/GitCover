@@ -1,4 +1,4 @@
-package de.pfeufferweb.gitcover;
+package de.pfeufferweb.gitcover.core;
 
 import static java.util.Collections.unmodifiableCollection;
 

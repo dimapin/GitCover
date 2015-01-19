@@ -1,10 +1,11 @@
-package de.pfeufferweb.gitcover;
+package de.pfeufferweb.gitcover.cli;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
+import de.pfeufferweb.gitcover.cli.GCOptions;
 import org.junit.Test;
 
 public class GCOptionsTest

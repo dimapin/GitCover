@@ -1,10 +1,22 @@
-package de.pfeufferweb.gitcover;
+package de.pfeufferweb.gitcover.core;
 
 import java.util.List;
 import java.util.Map;
 
-class FileCoverage
+public class FileCoverage
 {
+    public int getChangesLines() {
+        return changesLines;
+    }
+
+    public int getRelevantLines() {
+        return relevantLines;
+    }
+
+    public int getCoveredLines() {
+        return coveredLines;
+    }
+
     final int changesLines;
     final int relevantLines;
     final int coveredLines;
@@ -44,11 +56,11 @@ class FileCoverage
     @Override
     public String toString()
     {
-        return changesLines + " Zeile" + (changesLines == 1 ? "" : "n") + " geändert, " + relevantLines + " Zeile"
+        return changesLines + " Zeile" + (changesLines == 1 ? "" : "n") + " geï¿½ndert, " + relevantLines + " Zeile"
                 + (relevantLines == 1 ? "" : "n") + " testrelevant" + ", Testabdeckung: " + getCoverage() + "%";
     }
 
-    int getCoverage()
+    public int getCoverage()
     {
         return relevantLines == 0 ? 100 : (100 * coveredLines / relevantLines);
     }

@@ -1,5 +1,6 @@
-package de.pfeufferweb.gitcover;
+package de.pfeufferweb.gitcover.cli;
 
+import de.pfeufferweb.gitcover.core.CoverageTool;
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.GnuParser;
@@ -84,7 +85,7 @@ class GCOptions
         Option excludeModifiedOption = OptionBuilder.withLongOpt("exclude-modified")
                 .withDescription("use this to ignore files that have been modified").create("em");
         Option excludeAddedOption = OptionBuilder.withLongOpt("exclude-added")
-                .withDescription("use this to ignore files that have been modified").create("ea");
+                .withDescription("use this to ignore files that have been added").create("ea");
         Option coverageToolOption = OptionBuilder.withLongOpt("coverage-tool").withLongOpt("coverage-tool").hasArg()
                 .withDescription("use this to select between cobertura and jacoco").create("ct");
         options.addOption(ignoreFileOption);

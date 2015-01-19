@@ -1,4 +1,4 @@
-package de.pfeufferweb.gitcover;
+package de.pfeufferweb.gitcover.core;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -7,7 +7,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
-class FileLoader
+public class FileLoader
 {
     private final InputStream stream;
 
@@ -16,7 +16,7 @@ class FileLoader
         this.stream = stream;
     }
 
-    List<String> load() throws IOException
+    public List<String> load() throws IOException
     {
         BufferedReader in = new BufferedReader(new InputStreamReader(stream));
         String line;

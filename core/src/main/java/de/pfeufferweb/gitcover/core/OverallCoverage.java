@@ -1,11 +1,11 @@
-package de.pfeufferweb.gitcover;
+package de.pfeufferweb.gitcover.core;
 
-class OverallCoverage
+public class OverallCoverage
 {
     private int relevantLines = 0;
     private int coveredLines = 0;
 
-    void add(FileCoverage fileCoverage)
+    public void add(FileCoverage fileCoverage)
     {
         relevantLines += fileCoverage.relevantLines;
         coveredLines += fileCoverage.coveredLines;

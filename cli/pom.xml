@@ -24,7 +24,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>de.pfeufferweb.gitcover.GitCover</mainClass>
+                            <mainClass>de.pfeufferweb.gitcover.cli.GitCover</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>

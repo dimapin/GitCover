@@ -1,4 +1,6 @@
-package de.pfeufferweb.gitcover;
+package de.pfeufferweb.gitcover.cli;
+
+import de.pfeufferweb.gitcover.core.*;
 
 import static java.util.Collections.sort;
 
@@ -92,7 +94,7 @@ public class GitCover
         ChangedLines changedLines = createChangedLinesBuilder(options, options.getRepository()).build(
                 options.getReference());
         Coverage coverage=null;
-        if(options.getCoverageTool()==CoverageTool.JACOCO) {
+        if(options.getCoverageTool()== CoverageTool.JACOCO) {
             coverage = new JacocoCoverageBuilder().computeAll(new File(options.getRepository()));
         }
         else if(options.getCoverageTool()==CoverageTool.COBERTURA) {
@@ -116,7 +118,7 @@ public class GitCover
                 Map<Integer, Integer> lineCoverage = coverage.getCoverage(changedFile);
                 FileCoverage fileCoverage = FileCoverage.buildFrom(lineCoverage, lines);
                 overall.add(fileCoverage);
-                writeHeader(changedFile, fileCoverage.changesLines == 0 ? "ignored"
+                writeHeader(changedFile, fileCoverage.getChangesLines() == 0 ? "ignored"
                         : fileCoverage.getCoverage() >= 80 ? "allCovered" : "coverageMissing", fileCoverage.toString());
                 for (int line : lines)
                 {
