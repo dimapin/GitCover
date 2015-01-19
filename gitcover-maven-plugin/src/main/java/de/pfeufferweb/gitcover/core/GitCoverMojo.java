@@ -28,12 +28,14 @@ public class GitCoverMojo extends AbstractMojo
     private boolean excludeAdded;
 
     /**
-     *
+     * File containing patterns of files to be ignored.
+     * @paramter expression="${gitcover.ignoreFile}"
      */
     private String ignoreFile;
 
     /**
-     *
+     * Use this to select between cobertura and jacoco as coverage tool
+     * @parameter expression="${gitcover.coverageTool}"
      */
     private String coverageTool;
 
